@@ -1,0 +1,56 @@
+.table {
+	border: 1px solid black;
+	width: 100%;
+}
+
+.table tbody tr td {
+	text-align: left;
+}
+
+.table1 {
+    border: 1px solid black;
+	width: 100%;
+	border-right: none;
+}
+.table3 {
+    border: 1px solid black;
+	width: 100%;
+	border-left: none;
+}
+
+.table2 {
+	font-family: sans-serif;
+	font-size: 12px;
+	color: #444;
+	border-collapse: collapse;
+	border: 1px solid #f2f5f7;
+}
+
+.table2 tr th {
+	background: #35A9DB;
+	color: #fff;
+	font-weight: normal;
+	padding: 8px 20px;
+	text-align: center;
+}
+
+
+
+.column1 {
+	float: left;
+	width: 35%;
+	border-collapse: collapse;
+	padding-right: 5px;
+}
+
+.column2 {
+	float: left;
+	width: 60%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
