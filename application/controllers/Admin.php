@@ -17,6 +17,7 @@ class Admin extends CI_Controller
         $this->load->model('employee_model');
         $this->load->model('history_model');
         $this->load->model('payment_model');
+        $this->load->model('autofill_model');
         $this->load->helper('date');
     }
 
@@ -996,5 +997,22 @@ class Admin extends CI_Controller
         } else {
             echo "Error :" . $this->upload->display_errors();;
         };
+    }
+
+    public function historyajax()
+    {
+        $pns_id = $_GET['pns_id'];
+        $row = $this->db->query("SELECT employees.employee_name, employees.kronos_no, employees.no_sap, employees.department, employees.classification, employees.tanggal_join, classifications.name, departments.department_name FROM `employees` JOIN departments ON departments.id = employees.department JOIN classifications ON classifications.id = employees.classification WHERE pns_id = '$pns_id' ")->row_array();
+        $data = array(
+            'employee_name' => $row['employee_name'],
+            'no_cronos' => $row['kronos_no'],
+            'no_sap' => $row['no_sap'],
+            'position' => $row['name'],
+            'department' => $row['department_name'],
+            'depart' => $row['department'],
+            'class' => $row['classification'],
+            'date_in' => $row['tanggal_join'],
+        );
+        echo json_encode($data);
     }
 }

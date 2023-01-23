@@ -240,7 +240,7 @@
                                                     <div class="profile-info-row">
                                                         <div class="profile-info-name"> Tanggal Masuk </div>
                                                         <div class="profile-info-value">
-                                                            <span><input type="date" id="date_in" name="date_in" class="width-100" required /></span>
+                                                            <span><input type="date" id="date_in_ck" name="date_in" class="width-100" required /></span>
                                                         </div>
                                                     </div>
 
@@ -299,77 +299,104 @@
         <div class="modal-content">
             <form action="<?= base_url('add/history_add') ?>" method="POST" enctype="multipart/form-data">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add History</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Submit History</h5>
                 </div>
                 <div class="modal-body">
-                    <div class="profile-info-row">
-                        <div class="profile-info-name"> ID PNS </div>
-                        <div class="profile-info-value">
-                            <input type="text" class="form-control" name="pns_id" id="pns_id" placeholder="Masukkan PNS ID">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="">PNS ID</label>
+                                <input type="text" id="pns_id_cek" name="pns_id" class="col-xs-12" style="margin-bottom: 4%;" onkeyup="autofill()" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="profile-info-row">
-                        <div class="profile-info-name"> Nama Pegawai </div>
-                        <div class="profile-info-value">
-                            <input type="text" class="form-control" name="employee_name" id="employee_name" placeholder="Masukkan Nama Pegawai">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="">Nama Pegawai</label>
+                                <input type="text" id="employee_name_ck" name="employee_name" class="col-xs-12" style="margin-bottom: 4%;" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="profile-info-row">
-                        <div class="profile-info-name"> No SAP </div>
-                        <div class="profile-info-value">
-                            <input type="text" class="form-control" name="no_sap" id="no_sap" placeholder="Masukkan PNS ID">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="">No Kronos</label>
+                                <input type="text" id="no_cronos_ck" name="no_cronos" class="col-xs-12" style="margin-bottom: 4%;" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="profile-info-row">
-                        <div class="profile-info-name"> No Kronos </div>
-                        <div class="profile-info-value">
-                            <input type="text" class="form-control" name="no_cronos" id="no_cronos" placeholder="Masukkan PNS ID">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="">No SAP</label>
+                                <input type="text" id="no_sap_ck" name="no_sap" class="col-xs-12" style="margin-bottom: 4%;" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="profile-info-row">
-                        <div class="profile-info-name"> Tanggal Masuk </div>
-                        <div class="profile-info-value">
-                            <span><input type="date" id="date_in" name="date_in" class="width-100" required /></span>
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="">Position</label>
+                                <input type="text" id="position_ck" name="position" class="col-xs-12" style="margin-bottom: 4%;" />
+                                <input type="hidden" id="class" name="id_class" class="col-xs-12" style="margin-bottom: 4%;" />
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="profile-info-row">
-                        <div class="profile-info-name"> Tanggal Keluar </div>
-                        <div class="profile-info-value">
-                            <span><input type="date" id="date_out" name="date_out" class="width-100" required /></span>
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="">Departement</label>
+                                <input type="hidden" id="depart" name="id_depart" class="col-xs-12" style="margin-bottom: 4%;" />
+                                <input type="text" id="department_ck" name="department" class="col-xs-12" style="margin-bottom: 4%;" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="profile-info-row">
-                        <div class="profile-info-name"> Position </div>
-                        <div class="profile-info-value">
-                            <input type="text" class="form-control" name="position" id="position" placeholder="Masukkan Department">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="">Tanggal Masuk</label>
+                                <input type="date" id="date_in_ck" name="date_in" class="col-xs-12" style="margin-bottom: 4%;" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="profile-info-row">
-                        <div class="profile-info-name"> Department </div>
-                        <div class="profile-info-value">
-                            <input type="text" class="form-control" name="department" id="department" placeholder="Masukkan Department">
+                        <div class="col-md-6 col-lg-6">
+                            <div class="form-group">
+                                <label for="">Tanggal Keluar</label>
+                                <input type="date" id="date_out" name="date_out" class="col-xs-12" style="margin-bottom: 4%;" />
+                            </div>
                         </div>
-                    </div>
-                    <div class="profile-info-row">
-                        <div class="profile-info-name"> Project </div>
-                        <div class="profile-info-value">
-                            <input type="text" class="form-control" name="project" id="project" placeholder="Masukkan Nama Project">
+                        <div class="col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <label for="">Project</label>
+                                <input type="text" id="project" name="project" placeholder="Project" class="col-xs-12" style="margin-bottom: 4%;" />
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="profile-info-row">
-                        <div class="profile-info-name"> Remark </div>
-                        <div class="profile-info-value">
-                            <span><textarea placeholder="Remark" name="remark" style="width: 400px; height:100px"></textarea></span>
+                        <div class="col-md-12 col-lg-12">
+                            <div class="form-group">
+                                <label for="">Remark</label>
+                                <input type="text" id="remark" name="remark" placeholder="Remark" class="col-xs-12" style="margin-bottom: 4%;" />
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary"><i class="ace-icon fa fa-plus bigger-130"></i> Tambah</button>
+                    <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal"><i class="ace-icon fa fa-times bigger-125"></i> Close</button>
+                    <button type="submit" class="btn btn-sm btn-info"><i class="ace-icon fa fa-save bigger-125"></i> Tambah</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
+<script type="text/javascript">
+    function autofill() {
+        var pns_id = $('#pns_id_cek').val();
+        $.ajax({
+            url: "<?= base_url('admin/historyajax') ?>",
+            data: {
+                pns_id: pns_id
+            },
+            cache: false,
+            success: function(data) {
+                var json = data,
+                    obj = JSON.parse(json);
+                $("#employee_name_ck").val(obj.employee_name).attr('readonly', 'readonly');
+                $("#no_cronos_ck").val(obj.no_cronos).attr('readonly', 'readonly');
+                $("#no_sap_ck").val(obj.no_sap).attr('readonly', 'readonly');
+                $("#position_ck").val(obj.position).attr('readonly', 'readonly');
+                $("#department_ck").val(obj.department).attr('readonly', 'readonly');
+                $("#date_in_ck").val(obj.date_in);
+                $("#depart").val(obj.depart);
+                $("#class").val(obj.class);
+            }
+        });
+    }
+</script>

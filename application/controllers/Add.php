@@ -6,45 +6,30 @@ class Add extends CI_Controller
 
     public function classification_add()
     {
-        $this->form_validation->set_rules('companyID', 'Company ID', 'required|trim|numeric');
-        $this->form_validation->set_rules('name', 'Company Name', 'required|trim');
-        $this->form_validation->set_rules('address', 'Company Address', 'required|trim');
-        $this->form_validation->set_rules('accountName', 'Account Name', 'required|trim');
-        $this->form_validation->set_rules('accountBank', 'Account Bank', 'required|trim');
-        $this->form_validation->set_rules('accountNumber', 'Account Number', 'required|trim|numeric');
-        $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
-        $this->form_validation->set_rules('edit', 'Edit', 'required|in_list[true]');
 
-        if ($this->form_validation->run() == false) {
-            $this->load->view('user/header');
-            $this->load->view('user/sidebar');
-            $this->load->view('edit/profil_edit');
-            $this->load->view('user/footer');
-        } else {
-            $name           = $this->input->post('name');
-            $salary         = $this->input->post('salary');
-            $meal_allo      = $this->input->post('meal_allo');
-            $transport      = $this->input->post('transport');
-            $rate           = $this->input->post('rate');
-            $premi          = $this->input->post('premi');
-            $invoice_rate   = $this->input->post('invoice_rate');
-            $created_at     = date("Y/m/d h:i:s");
+        $name           = $this->input->post('name');
+        $salary         = $this->input->post('salary');
+        $meal_allo      = $this->input->post('meal_allo');
+        $transport      = $this->input->post('transport');
+        $rate           = $this->input->post('rate');
+        $premi          = $this->input->post('premi');
+        $invoice_rate   = $this->input->post('invoice_rate');
+        $created_at     = date("Y/m/d h:i:s");
 
-            $data = array(
-                'name'          => $name,
-                'salary'        => $salary,
-                'meal_allo'     => $meal_allo,
-                'transport'     => $transport,
-                'ot_rate'       => $rate,
-                'premi'         => $premi,
-                'invoice_rate'  => $invoice_rate,
-                'created_at'    => $created_at
-            );
+        $data = array(
+            'name'          => $name,
+            'salary'        => $salary,
+            'meal_allo'     => $meal_allo,
+            'transport'     => $transport,
+            'ot_rate'       => $rate,
+            'premi'         => $premi,
+            'invoice_rate'  => $invoice_rate,
+            'created_at'    => $created_at
+        );
 
-            $this->db->insert('classifications', $data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success"><strong>New Classification Added.</strong></div>');
-            redirect('admin/classifications');
-        }
+        $this->db->insert('classifications', $data);
+        $this->session->set_flashdata('message', '<div class="alert alert-success"><strong>New Classification Added.</strong></div>');
+        redirect('admin/classifications');
     }
 
     public function department_add()
